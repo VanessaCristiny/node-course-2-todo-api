@@ -56,9 +56,7 @@ describe('POST /todos', () => {
         done();
       }).catch((e) => done(e));
     });
-
   });
-
 });
 
 describe('GET /todos', () => {
