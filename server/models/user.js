@@ -68,6 +68,17 @@ UserSchema.statics.findByToken = function (token) {
     'tokens.access': 'auth'
   });
 };
+
+UserSchema.methods.removeToken = function (token) {
+  var user = this;
+
+  return user.update({
+    $pull: {
+      tokens: {token}
+    }
+  });
+};
+
 //statics for a model method and methods for an instance method
 UserSchema.statics.findByCredentials = function (email, password) {
   var User = this;
@@ -83,7 +94,7 @@ UserSchema.statics.findByCredentials = function (email, password) {
             resolve(user);
           } else {
             reject();
-          }  
+          }
       });
     });
   });

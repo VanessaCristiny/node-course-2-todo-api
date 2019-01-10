@@ -286,6 +286,7 @@ describe('POST /users/login', () => {
 
       User.findById(users[1]._id).then((user) => {
         expect(user.tokens[0]).toBe.empty;
+        //toBe(0)
         done();
       }).catch((e) => done(e));
     });
